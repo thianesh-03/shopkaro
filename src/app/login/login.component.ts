@@ -2,16 +2,13 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Router, RouterLink } from '@angular/router';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterLink, MatInputModule, MatButtonModule, MatCardModule, MatSnackBarModule, NgIf],
+  imports: [ReactiveFormsModule, RouterLink, NgIf],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })

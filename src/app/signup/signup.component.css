@@ -64,6 +64,7 @@ body {
 }
 
 button.submit-button {
+  margin-bottom: 20px;
   margin-top: 20px;
   width: 100%;
   background-color: #8b3dff;
@@ -77,4 +78,8 @@ button.submit-button {
 
 button.submit-button:hover {
   background-color: #7528d9;
+}
+
+#signup-link{
+  text-align: center;
 }

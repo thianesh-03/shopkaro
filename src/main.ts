@@ -1,6 +1,5 @@
 // src/main.ts
 import { enableProdMode, importProvidersFrom } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppComponent } from './app/app.component';
 import { provideRouter } from '@angular/router';
 import { routes } from './app/app.routes';
