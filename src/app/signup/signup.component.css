@@ -1,25 +1,80 @@
+/* Reset and basic styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
 .signup-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #f9f9f9;
+  height: 91vh;
+  background-color: #b484fd44;
+  padding: 20px;
 }
 
-.signup-container mat-card {
+.signup-card {
+  width: 100%;
   max-width: 400px;
-  width: 100%;
-  padding: 40px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  background-color: #ffffff00;
+  border-radius: 30px;
 }
 
-.signup-container mat-form-field {
-  width: 100%;
+.signup-card h2 {
+  font-size: 24px;
+  color: #8b3dff;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-.signup-container button {
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.input-field {
   width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.input-field:focus {
+  border-color: #8b3dff;
+  outline: none;
+}
+
+.error {
+  color: #ff5252;
+  font-size: 12px;
+}
+
+button.submit-button {
   margin-top: 20px;
-  color: #8b3dff ;
-  padding: 20px 20px;
+  width: 100%;
+  background-color: #8b3dff;
+  color: #fff;
+  padding: 10px 0;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.submit-button:hover {
+  background-color: #7528d9;
 }
