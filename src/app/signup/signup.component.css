@@ -1,21 +1,25 @@
-/* src/app/signup/signup.component.css */
 .signup-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: #f9f9f9;
 }
 
-mat-card {
-  width: 400px;
-  padding: 20px;
+.signup-container mat-card {
+  max-width: 400px;
+  width: 100%;
+  padding: 40px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-mat-form-field {
+.signup-container mat-form-field {
   width: 100%;
 }
 
-button {
+.signup-container button {
   width: 100%;
   margin-top: 20px;
+  color: #8b3dff ;
+  padding: 20px 20px;
 }
