@@ -1,4 +1,3 @@
-// server.js
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
@@ -30,9 +29,6 @@ app.post('/api/register', async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    // Check if the email already exists
-    console.log('Received email:', email);
-    console.log('Received password:', password);
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ error: 'Email already exists' });
@@ -43,10 +39,6 @@ app.post('/api/register', async (req, res) => {
     await user.save();
     res.status(201).json({ message: 'User registered' });
   } catch (err) {
-    if (err.code === 11000) {
-      // Duplicate key error (email already exists)
-      return res.status(400).json({ error: 'Email already exists' });
-    }
     console.error(err);
     res.status(500).json({ error: 'Server error' });
   }
@@ -66,6 +58,27 @@ app.post('/api/login', async (req, res) => {
     }
   } catch (err) {
     res.status(500).send('Server error');
+  }
+});
+
+// Profile route
+app.get('/api/profile', async (req, res) => {
+  const authHeader = req.headers.authorization;
+  if (authHeader) {
+    const token = authHeader.split(' ')[1];
+    jwt.verify(token, 'secret', async (err, decoded) => {
+      if (err) {
+        return res.sendStatus(403);
+      }
+      const user = await User.findOne({ email: decoded.email });
+      if (user) {
+        res.json({ email: user.email });
+      } else {
+        res.sendStatus(404);
+      }
+    });
+  } else {
+    res.sendStatus(401);
   }
 });
 

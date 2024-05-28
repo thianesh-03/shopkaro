@@ -1,4 +1,3 @@
-// src/main.ts
 import { enableProdMode, importProvidersFrom } from '@angular/core';
 import { AppComponent } from './app/app.component';
 import { provideRouter } from '@angular/router';
@@ -8,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { environment } from './environments/environment';
+import { AuthGuard } from './app/auth.guard';
 
 if (environment.production) {
   enableProdMode();
@@ -17,6 +17,7 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideRouter(routes),
     importProvidersFrom(BrowserModule, HttpClientModule),
-    provideAnimations()
+    provideAnimations(),
+    AuthGuard
   ]
 }).catch(err => console.error(err));

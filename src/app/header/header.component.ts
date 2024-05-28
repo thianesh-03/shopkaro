@@ -1,20 +1,33 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { RouterLink, RouterOutlet } from '@angular/router';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterLink,RouterOutlet,FormsModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
+  isAuthenticated = false;
 
-  constructor(private router: Router) {}
-  
-    onSearch() {
-      this.router.navigate(['login']);
-    }
+  constructor(private router: Router, private authService: AuthService) {
+    this.authService.isAuthenticated().subscribe(
+      (status) => {
+        this.isAuthenticated = status;
+      }
+    );
+  }
+
+  onSearch() {
+    this.router.navigate(['/login']);
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/']);
+  }
 }
