@@ -1,4 +1,4 @@
-nav {
+nav, #nav-bar{
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -27,11 +27,22 @@ nav {
     background-color: #f5f5f5;
   }
   
-  nav li:nth-child(3) a {
+  nav li:nth-child(4) a {
     background-color: #8b3dff;
     color: #fff;
   }
   
-  nav li:nth-child(3) a:hover {
+  nav li:nth-child(4) a:hover {
     background-color: #7528d9;
+  }
+
+  #search-input{
+    padding: 10px;
+    box-align:center;
+    border-radius: 20px;
+    border:none;
+  }
+
+  #search-input:hover {
+    background-color: #f5f5f5;
   }
