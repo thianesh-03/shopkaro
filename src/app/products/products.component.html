@@ -1,0 +1,16 @@
+<!-- src/app/products/products.component.html -->
+<div class="products">
+    <a *ngFor="let product of products" [routerLink]="['/payment', product.id]">
+        <div class="product-card">
+            <h2>{{ product.name }}</h2>
+            <h3>{{ product.category }}</h3>
+            <div class="product-images">
+                <img *ngFor="let image of product.images" [src]="image" alt="{{ product.name }}">
+            </div>
+            <ul>
+                <li *ngFor="let desc of product.description">{{ desc }}</li>
+            </ul>
+            <p class="price">{{ product.price | currency:"INR" }}</p>
+        </div>
+    </a>
+</div>

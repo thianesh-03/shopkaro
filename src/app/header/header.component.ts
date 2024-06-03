@@ -23,7 +23,7 @@ export class HeaderComponent {
   }
 
   onSearch() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/products']);
   }
 
   logout() {

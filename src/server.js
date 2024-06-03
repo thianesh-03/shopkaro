@@ -24,6 +24,17 @@ const UserSchema = new mongoose.Schema({
 
 const User = mongoose.model('User', UserSchema);
 
+// Product Schema
+const ProductSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  category: { type: String, required: true },
+  description: { type: [String], required: true },
+  price: { type: Number, required: true },
+  images: { type: [String], required: true }
+});
+
+const Product = mongoose.model('Product', ProductSchema);
+
 // Register route
 app.post('/api/register', async (req, res) => {
   const { email, password } = req.body;
@@ -79,6 +90,21 @@ app.get('/api/profile', async (req, res) => {
     });
   } else {
     res.sendStatus(401);
+  }
+});
+
+// Products route
+app.get('/api/products', async (req, res) => {
+  try {
+    const products = await Product.find({});
+    const normalizedProducts = products.map(product => ({
+      ...product._doc,
+      description: Array.isArray(product.description) ? product.description : [product.description]
+    }));
+    res.json(normalizedProducts);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Server error' });
   }
 });
 

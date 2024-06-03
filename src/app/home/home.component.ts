@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,4 +10,8 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 })
 export class HomeComponent {
 
+  constructor(private router: Router){}
+  onClick(){
+    this.router.navigate(["/products"]);
+  }
 }
