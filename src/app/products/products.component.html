@@ -1,6 +1,6 @@
 <!-- src/app/products/products.component.html -->
 <div class="products">
-    <a *ngFor="let product of products" [routerLink]="['/payment', product.id]">
+    <a *ngFor="let product of products" [routerLink]="['/payment']" [queryParams]="{ name: product.name, image: product.images[0] }">
         <div class="product-card">
             <h2>{{ product.name }}</h2>
             <h3>{{ product.category }}</h3>
@@ -10,7 +10,7 @@
             <ul>
                 <li *ngFor="let desc of product.description">{{ desc }}</li>
             </ul>
-            <p class="price">{{ product.price | currency:"INR" }}</p>
+            <p class="price">{{ product.price * 75 | currency: 'INR' }}</p>
         </div>
     </a>
 </div>

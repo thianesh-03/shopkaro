@@ -1,12 +1,23 @@
-import { Component } from '@angular/core';
+// payment.component.ts
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-payment',
-  standalone: true,
-  imports: [],
   templateUrl: './payment.component.html',
-  styleUrl: './payment.component.css'
+  styleUrls: ['./payment.component.css']
 })
-export class PaymentComponent {
+export class PaymentComponent implements OnInit {
+  productName: string = '';
+  productImage: string = '';
 
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    // Retrieve product details from URL queryParams
+    this.route.queryParams.subscribe(params => {
+      this.productName = params['name'];
+      this.productImage = params['image'];
+    });
+  }
 }
