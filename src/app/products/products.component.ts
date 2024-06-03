@@ -2,12 +2,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductsService } from '../services/products.service';
-import { RouterLink, RouterModule } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule,RouterLink,RouterModule],
+  imports: [CommonModule,RouterLink],
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
@@ -18,6 +18,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.productsService.getProducts().subscribe((data) => {
+      console.log(data); // Log product data to inspect structure
       this.products = data;
     });
   }

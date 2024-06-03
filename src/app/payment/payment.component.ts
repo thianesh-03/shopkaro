@@ -1,9 +1,12 @@
-// payment.component.ts
+// src/app/payment/payment.component.ts
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-payment',
+  standalone: true,
+  imports: [CommonModule,RouterLink],
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.css']
 })

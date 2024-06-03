@@ -5,17 +5,19 @@
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
-  margin-top: 20px; /* Add margin to push products below the navbar */
+  background-color: #d3bcf73d;
 }
 
 .product-card {
   border: 1px solid #ccc;
   border-radius: 10px;
-  padding: 20px;
-  width: 300px;
+  padding: 15px; /* Reduced padding */
+  width: 250px; /* Reduced width */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
   transition: transform 0.3s; /* Add smooth transition */
+  background-color: #fff;
+  margin-top: 20px;
 }
 
 .product-card:hover {
@@ -23,27 +25,33 @@
 }
 
 .product-card h2 {
-  font-size: 18px;
-  margin-bottom: 10px;
+  font-size: 16px; /* Reduced font size */
+  margin-bottom: 8px;
 }
 
 .product-card h3 {
-  font-size: 16px;
-  margin-bottom: 10px;
+  font-size: 14px; /* Reduced font size */
+  margin-bottom: 8px;
   color: #666;
+}
+
+.product-images {
+  width: 100%;
+  height: 150px; /* Reduced height */
+  margin: 10px auto;
 }
 
 .product-images img {
   width: 100%;
-  max-width: 200px; /* Increase maximum width for better fit */
-  height: auto; /* Maintain aspect ratio */
-  margin: 10px auto;
+  height: 100%;
+  object-fit: cover; /* Maintain aspect ratio and cover the container */
+  border-radius: 10px;
 }
 
 .product-card ul {
   list-style-type: none;
   padding: 0;
-  margin: 20px 0;
+  margin: 15px 0; /* Reduced margin */
 }
 
 .product-card ul li {
@@ -51,11 +59,17 @@
 }
 
 .price {
-  font-size: 20px;
+  font-size: 18px; /* Reduced font size */
   font-weight: bold;
   color: #333;
 }
 
-a{
-  text-decoration:none;
+a {
+  text-decoration: none;
+}
+
+.product-card .product-description {
+  max-height: 50px; /* Set a max height */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Add ellipsis for overflow text */
 }

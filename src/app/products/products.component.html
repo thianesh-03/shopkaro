@@ -1,16 +1,15 @@
 <!-- src/app/products/products.component.html -->
 <div class="products">
-    <a *ngFor="let product of products" [routerLink]="['/payment']" [queryParams]="{ name: product.name, image: product.images[0] }">
+    <a *ngFor="let product of products" [routerLink]="['/payment']" [queryParams]="{ name: product.title, image: product.image }">
         <div class="product-card">
-            <h2>{{ product.name }}</h2>
+            <h2>{{ product.title }}</h2>
             <h3>{{ product.category }}</h3>
             <div class="product-images">
-                <img *ngFor="let image of product.images" [src]="image" alt="{{ product.name }}">
+                <img [src]="product.image" alt="{{ product.title }}">
             </div>
-            <ul>
-                <li *ngFor="let desc of product.description">{{ desc }}</li>
-            </ul>
+            <!-- <p>{{ product.description }}</p> -->
             <p class="price">{{ product.price * 75 | currency: 'INR' }}</p>
+            <p *ngIf="product.rating">Rating: {{ product.rating.rate }} ({{ product.rating.count }} reviews)</p>
         </div>
     </a>
 </div>

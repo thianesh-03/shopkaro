@@ -109,3 +109,37 @@
     padding: 10px;
   }
   
+  /* src/app/payment/payment.component.css */
+.payment-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.payment-container h2 {
+  margin-bottom: 20px;
+}
+
+.product-image img {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.buy-now {
+  background-color: #8b3dff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buy-now:hover {
+  background-color: #7528d9;
+}
