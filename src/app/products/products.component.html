@@ -1,3 +1,4 @@
+<div class="products">
 <div class="product-page">
 <div class="filter-container">
     <h3>Filter by:</h3>
@@ -26,7 +27,6 @@
         <label for="stock">Stock Availability</label>
     </div>
 </div>
-
 <!-- src/app/products/products.component.html -->
 <div class="products">
     <a *ngFor="let product of products" [routerLink]="['/payment']" [queryParams]="{ name: product.title, image: product.image }">
