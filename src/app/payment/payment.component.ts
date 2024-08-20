@@ -1,7 +1,7 @@
 // src/app/payment/payment.component.ts
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-payment',
@@ -14,7 +14,7 @@ export class PaymentComponent implements OnInit {
   productName: string = '';
   productImage: string = '';
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute,private router: Router) {}
 
   ngOnInit(): void {
     // Retrieve product details from URL queryParams
@@ -23,4 +23,9 @@ export class PaymentComponent implements OnInit {
       this.productImage = params['image'];
     });
   }
+  onPaymentSubmit(): void {
+    alert('Order placed successfully!');
+    this.router.navigate(['/'])
+  }
+
 }

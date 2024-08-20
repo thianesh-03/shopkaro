@@ -1,28 +1,21 @@
 <div class="products">
 <div class="product-page">
+    <div class="our-products-container">
+        <h2 class="our-products-heading">Our Products</h2>
+    </div>
 <div class="filter-container">
     <h3>Filter by:</h3>
     <div>
         <input type="radio" id="all" name="filter" value="all" (change)="onFilterChange($event)" checked>
         <label for="all">All</label>
-    </div>
-    <div>
         <input type="radio" id="price" name="filter" value="price" (change)="onFilterChange($event)">
-        <label for="price">Price</label> 
-    </div>
-    <div>
+        <label for="price">Price</label>   
         <input type="radio" id="category" name="filter" value="category" (change)="onFilterChange($event)">
         <label for="category">Category</label>
-    </div>
-    <div>
         <input type="radio" id="rating" name="filter" value="rating" (change)="onFilterChange($event)">
         <label for="rating">Rating</label>
-    </div>
-    <div>
         <input type="radio" id="brand" name="filter" value="brand" (change)="onFilterChange($event)">
         <label for="brand">Brand</label>
-    </div>
-    <div>
         <input type="radio" id="stock" name="filter" value="stock" (change)="onFilterChange($event)">
         <label for="stock">Stock Availability</label>
     </div>
@@ -42,9 +35,7 @@
         </div>
     </a>
 </div>
-<div class="our-products-container">
-    <h2 class="our-products-heading">Our Products</h2>
-</div>
+
 
 
     
