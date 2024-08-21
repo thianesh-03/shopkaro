@@ -1,14 +1,23 @@
-<!-- src/app/payment/payment.component.html -->
 <div class="payment-container">
-  <h2>Product: {{ productName }}</h2>
-  <div class="product-image">
+  <div class="product-buy-container">
+    <div class="product-image">
       <img [src]="productImage" alt="{{ productName }}">
+    </div>
+
+    <div class="buy-control">
+      <h2>Product: {{ productName }}</h2>
+      <h2>Price: {{ productPrice | currency:'INR' }}</h2>
+      <div class="quantity-control">
+        <button (click)="decrement()">-</button>
+        <span>{{quantity}}</span>
+        <button (click)="increment()">+</button>
+      </div>
+      <h2>Total Price: {{totalPrice | currency:'INR'}}</h2>
+      <button (click)="onPaymentSubmit()" class="buy-now">Buy Now</button>
+    </div>
   </div>
-  <button (click)="onPaymentSubmit()" class="buy-now">Buy Now</button>
 </div>
 
-  
-  <footer>
-    <p>&copy; 2024 shopkaro. All rights reserved.</p>
-  </footer>
-  
+<footer>
+  <p>&copy; 2024 shopkaro. All rights reserved.</p>
+</footer>

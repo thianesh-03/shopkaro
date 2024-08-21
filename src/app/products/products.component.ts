@@ -1,13 +1,12 @@
-// src/app/products/products.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductsService } from '../services/products.service';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-products',
   standalone: true,
-  imports: [CommonModule,RouterLink],
+  imports: [CommonModule, RouterLink],
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.css']
 })
@@ -15,14 +14,33 @@ export class ProductsComponent implements OnInit {
   products: any[] = [];
   filteredProducts: any[] = [];
   filter: string = 'all';
+  searchQuery: string = '';
 
-  constructor(private productService: ProductsService) {}
+  constructor(private productService: ProductsService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.productService.getProducts().subscribe((data: any[]) => {
-      this.products = data;
-      this.filteredProducts = data;
+    this.loadProducts();
+    this.route.queryParams.subscribe(params => {
+      this.searchQuery = params['searchQuery'] ? params['searchQuery'].toLowerCase() : '';
+      this.applyFilterAndSearch();
     });
+  }
+
+  loadProducts(): void {
+    this.productService.getProducts().subscribe(
+      (data: any[]) => {
+        this.products = data;
+        this.applyFilterAndSearch();
+      },
+      err => console.error("Error in fetching the data", err)
+    );
+  }
+
+  applyFilterAndSearch(): void {
+    this.filteredProducts = this.products.filter(product =>
+      product.title.toLowerCase().includes(this.searchQuery)
+    );
+    this.applyFilter();
   }
 
   onFilterChange(event: any): void {
@@ -33,26 +51,17 @@ export class ProductsComponent implements OnInit {
   applyFilter(): void {
     switch (this.filter) {
       case 'all':
-        this.filteredProducts = this.products;
+        // No sorting needed
         break;
       case 'price':
-        this.filteredProducts = this.products.sort((a, b) => a.price - b.price);
+        this.filteredProducts.sort((a, b) => a.price - b.price);
         break;
       case 'category':
-        this.filteredProducts = this.products.sort((a, b) => a.category.localeCompare(b.category));
+        this.filteredProducts.sort((a, b) => a.category.localeCompare(b.category));
         break;
       case 'rating':
-        this.filteredProducts = this.products.sort((a, b) => b.rating.rate - a.rating.rate);
+        this.filteredProducts.sort((a, b) => b.rating.rate - a.rating.rate);
         break;
-      case 'brand':
-        this.filteredProducts = this.products.sort((a, b) => a.brand.localeCompare(b.brand));
-        break;
-      case 'stock':
-        this.filteredProducts = this.products.sort((a, b) => b.stock - a.stock);
-        break;
-      default:
-        this.filteredProducts = this.products;
-        break; 
-    }
-  }
+    }
+  }
 }

@@ -1,75 +1,90 @@
-/* src/app/products/products.component.css */
-
 .products {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   background-color: #d3bcf73d;
+  padding: 20px; /* Add padding to prevent edge touching */
+  box-sizing: border-box; /* Include padding in element's total width/height */
+}
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columns */
+  gap: 20px;
+  max-width: 1200px; /* Set a max width to prevent overflow */
+  margin: 0 auto; /* Center the grid on the page */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .product-card {
   border: 1px solid #ccc;
   border-radius: 10px;
-  padding: 15px; /* Reduced padding */
-  width: 250px; /* Reduced width */
+  padding: 15px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
-  transition: transform 0.3s; /* Add smooth transition */
+  transition: transform 0.3s;
   background-color: #fff;
-  margin-top: 20px;
 }
 
 .product-card:hover {
-  transform: translateY(-5px); /* Add a slight lift on hover */
+  transform: translateY(-5px);
 }
 
 .product-card h2 {
-  font-size: 16px; /* Reduced font size */
+  font-size: 16px;
   margin-bottom: 8px;
 }
 
 .product-card h3 {
-  font-size: 14px; /* Reduced font size */
+  font-size: 14px;
   margin-bottom: 8px;
   color: #666;
 }
 
 .product-images {
   width: 100%;
-  height: 150px; /* Reduced height */
+  height: 150px;
   margin: 10px auto;
 }
 
 .product-images img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Maintain aspect ratio and cover the container */
+  object-fit: cover;
   border-radius: 10px;
 }
 
-.product-card ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 15px 0; /* Reduced margin */
-}
-
-.product-card ul li {
-  text-align: left;
-}
-
 .price {
-  font-size: 18px; /* Reduced font size */
+  font-size: 18px;
   font-weight: bold;
   color: #333;
 }
 
-a {
-  text-decoration: none;
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+  text-align: center;
 }
 
-.product-card .product-description {
-  max-height: 50px; /* Set a max height */
-  overflow: hidden; /* Hide overflow text */
-  text-overflow: ellipsis; /* Add ellipsis for overflow text */
+.filter-options {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.filter-options input {
+  margin-right: 5px;
+}
+
+.filter-options label {
+  margin-right: 15px;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }

@@ -1,5 +1,16 @@
 <nav>
-    <input type="text" id="search-input" placeholder="Search" (click)="onSearch()">
+  <div class="search-container">
+    <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+      <input 
+        type="text" 
+        id="search-input" 
+        placeholder="Search" 
+        formControlName="searchQuery"
+        (keyup.enter)="onSearch()"
+      />
+    </form>
+  </div>
+
       <li><a routerLink="/">Home</a></li>
       <li><a routerLink="/products">Products</a></li>
       <li *ngIf="!isAuthenticated"><a routerLink="/login">Login</a></li>

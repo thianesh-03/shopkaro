@@ -1,41 +1,36 @@
 <div class="products">
-<div class="product-page">
-    <div class="our-products-container">
+    <div class="product-page">
+      <div class="our-products-container">
         <h2 class="our-products-heading">Our Products</h2>
-    </div>
-<div class="filter-container">
-    <h3>Filter by:</h3>
-    <div>
-        <input type="radio" id="all" name="filter" value="all" (change)="onFilterChange($event)" checked>
-        <label for="all">All</label>
-        <input type="radio" id="price" name="filter" value="price" (change)="onFilterChange($event)">
-        <label for="price">Price</label>   
-        <input type="radio" id="category" name="filter" value="category" (change)="onFilterChange($event)">
-        <label for="category">Category</label>
-        <input type="radio" id="rating" name="filter" value="rating" (change)="onFilterChange($event)">
-        <label for="rating">Rating</label>
-        <input type="radio" id="brand" name="filter" value="brand" (change)="onFilterChange($event)">
-        <label for="brand">Brand</label>
-        <input type="radio" id="stock" name="filter" value="stock" (change)="onFilterChange($event)">
-        <label for="stock">Stock Availability</label>
-    </div>
-</div>
-<!-- src/app/products/products.component.html -->
-<div class="products">
-    <a *ngFor="let product of products" [routerLink]="['/payment']" [queryParams]="{ name: product.title, image: product.image }">
-        <div class="product-card">
+      </div>
+      <div class="filter-container">
+        <h3>Filter by:</h3>
+        <div class="filter-options">
+          <input type="radio" id="all" name="filter" value="all" (change)="onFilterChange($event)" checked>
+          <label for="all">All</label>
+          <input type="radio" id="price" name="filter" value="price" (change)="onFilterChange($event)">
+          <label for="price">Price</label>
+          <input type="radio" id="category" name="filter" value="category" (change)="onFilterChange($event)">
+          <label for="category">Category</label>
+          <input type="radio" id="rating" name="filter" value="rating" (change)="onFilterChange($event)">
+          <label for="rating">Rating</label>
+        </div>
+      </div>
+      
+      <div class="product-list">
+        <a *ngFor="let product of filteredProducts" [routerLink]="['/payment']" 
+           [queryParams]="{ name: product.title, image: product.image, price: product.price * 75 }">
+          <div class="product-card">
             <h2>{{ product.title }}</h2>
             <h3>{{ product.category }}</h3>
             <div class="product-images">
-                <img [src]="product.image" alt="{{ product.title }}">
+              <img [src]="product.image" alt="{{ product.title }}">
             </div>
-            <!-- <p>{{ product.description }}</p> -->
             <p class="price">{{ product.price * 75 | currency: 'INR' }}</p>
             <p *ngIf="product.rating">Rating: {{ product.rating.rate }} ({{ product.rating.count }} reviews)</p>
-        </div>
-    </a>
-</div>
-
-
-
-    
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  
